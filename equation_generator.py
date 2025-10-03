@@ -14,6 +14,8 @@ For example: 12+34=46 or 8*7=56
 # TODO: Implement the following functions #
 ###########################################
 
+import random
+
 def generate_numbers_for_addition():
     """
     Generate two numbers that when added create an 8-character equation.
@@ -24,6 +26,11 @@ def generate_numbers_for_addition():
 
     Example: (12, 34, 46) creates "12+34=46"
     """
+    # The numbers can't be single or triple digits as that wouldn't let the equation be 8 characters
+    num1 = random.randint(10, 99)
+    num2 = random.randint(10, 99)
+    result = num1 + num2
+    return num1, num2, result
 
 def generate_numbers_for_subtraction():
     """
@@ -35,6 +42,17 @@ def generate_numbers_for_subtraction():
 
     Example: (56, 23, 33) creates "56-23=33"
     """
+    # The numbers can't be single digits as that wouldn't let the equation be 8 characters
+    # If the first number is triple digits, the second number has to be single digits
+    num1 = random.randint(10, 108)
+    num2 = 1000
+    if num1 > 99:
+        num2 = random.randint(num1 - 99, 9)
+    else:
+        while num2 > num1:
+            num2 = random.randint(10, 99)
+    result = num1 - num2
+    return num1, num2, result
 
 def generate_numbers_for_multiplication():
     """
@@ -47,6 +65,12 @@ def generate_numbers_for_multiplication():
     
     Example: (3, 34, 102) creates "3*34=102" (8 characters)
     """
+    # The first number has to be single digits and not zero or one in order to create an 8 character equation
+    # The second number must be two digits and not ten or eleven as those can't create a three character result
+    num1 = random.randint(2, 9)
+    num2 = random.randint(12, 99)
+    result = num1 * num2
+    return num1, num2, result
 
 def generate_numbers_for_division():
     """
@@ -59,6 +83,11 @@ def generate_numbers_for_division():
 
     Example: (252, 36, 7) creates "252/36=7"
     """
+
+    result = random.randint(2, 9)
+    num2 = random.randint(12, 99)
+    num1 = result * num2
+    return num1, num2, result
     
 ################################################################################
 #  DO NOT EDIT BELOW THIS LINE, THESE FUNCTIONS ARE ALREADY COMPLETED FOR YOU  #
