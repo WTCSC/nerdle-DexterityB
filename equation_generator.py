@@ -47,7 +47,11 @@ def generate_numbers_for_subtraction():
     num1 = random.randint(10, 108)
     num2 = 1000
     if num1 > 99:
-        num2 = random.randint(num1 - 99, 9)
+        match random.randint(1,2):
+            case 1:
+                num2 = random.randint(num1 - 99, 9)
+            case 2:
+                num2 = random.randint(num1 - 9, 99)
     else:
         while num2 > num1:
             num2 = random.randint(10, 99)
