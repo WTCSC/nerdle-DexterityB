@@ -27,8 +27,14 @@ def generate_numbers_for_addition():
     Example: (12, 34, 46) creates "12+34=46"
     """
     # The numbers can't be single or triple digits as that wouldn't let the equation be 8 characters
-    num1 = random.randint(10, 99)
-    num2 = random.randint(10, 99)
+    num1 = random.randint(1, 99)
+    num2 = 1000
+    if num1 < 10:
+        num2 = random.randint(num1 + 90, 99)
+    elif 9 < num1 < 90:
+        num2 = random.randint(10, 99 - num1)
+    elif num1 > 90:
+        num2 = random.randint(100-num1, 9)
     result = num1 + num2
     return num1, num2, result
 
