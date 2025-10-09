@@ -26,7 +26,7 @@ def generate_numbers_for_addition():
 
     Example: (12, 34, 46) creates "12+34=46"
     """
-    # The numbers can't be single or triple digits as that wouldn't let the equation be 8 characters
+     # The initial numbers can't be triple digits as that wouldn't let the equation be 8 characters
     num1 = random.randint(1, 99)
     num2 = 1000
     if num1 < 10:
